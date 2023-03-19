@@ -2,21 +2,25 @@ package src.converter.views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Menu extends GeneralJFrame implements ActionListener{
+public class Menu extends GeneralJFrame{
     private String option;
     private JButton buttonAccept;
     private JButton buttonCancel;
     private JComboBox<String> menu;
     private String[] options = {"Conversor de divisas", "Conversor de temperatura"};
-    JPanel panelButtons;
+    private JPanel panelButtons;
+    private JLabel hint;
 
     public Menu(){
         // Definiendo el Jframe
         super();
         setTitle("Menu");
+
+        // Definiendo el texto indicaciones
+        hint = new JLabel("Selecciona un tipo de conversor");
+        // hint.setHorizontalAlignment(JLabel.CENTER);
         // Definiendo el menu desplegable
 
         menu = new JComboBox<>(options);
@@ -30,14 +34,10 @@ public class Menu extends GeneralJFrame implements ActionListener{
 
         // Boton Ok
         buttonAccept = new JButton("Aceptar");
-        buttonAccept.setActionCommand("buttonAccept");
-        buttonAccept.addActionListener(this);
         panelButtons.add(buttonAccept);
 
         // Boton Cancel
         buttonCancel = new JButton("Cancelar");
-        buttonCancel.setActionCommand("buttonCancel");
-        buttonCancel.addActionListener(this);
         panelButtons.add(buttonCancel);
         
         actions();
@@ -52,10 +52,10 @@ public class Menu extends GeneralJFrame implements ActionListener{
     }
 
     private void actions(){
-        // Modificando BoxLayouts
-        getMainPanel().setLayout(new BoxLayout(getMainPanel(), BoxLayout.Y_AXIS));
         // Añadiendo elementos
-
+        getMainPanel().setPreferredSize(new Dimension(255,85));
+        getMainPanel().add(hint);
+        getMainPanel().add(Box.createVerticalStrut(3));
         getMainPanel().add(menu);
         getMainPanel().add(Box.createVerticalStrut(3));
         getMainPanel().add(panelButtons);
@@ -76,11 +76,6 @@ public class Menu extends GeneralJFrame implements ActionListener{
         buttonCancel.addActionListener(listener);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-    }
 
     // public static void main(String[] args) {
     //     Menu menu = new Menu();

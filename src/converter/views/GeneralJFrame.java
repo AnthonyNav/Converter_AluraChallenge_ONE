@@ -18,6 +18,7 @@ public class GeneralJFrame extends JFrame{
         mainPanel = new JPanel();
         mainPanel.setLayout(new FlowLayout());
         setContentPane(mainPanel);
+        setResizable(false);
     }
 
     public JPanel getMainPanel() {
