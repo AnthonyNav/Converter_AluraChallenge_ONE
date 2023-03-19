@@ -43,6 +43,14 @@ public class Menu extends GeneralJFrame implements ActionListener{
         actions();
     }
 
+    public JButton getButtonAccept() {
+        return buttonAccept;
+    }
+
+    public JButton getButtonCancel() {
+        return buttonCancel;
+    }
+
     private void actions(){
         // Modificando BoxLayouts
         getMainPanel().setLayout(new BoxLayout(getMainPanel(), BoxLayout.Y_AXIS));
@@ -60,21 +68,22 @@ public class Menu extends GeneralJFrame implements ActionListener{
         return option;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Capturar el evento del clic al boton aceptar
-        if("buttonAccept".equals(e.getActionCommand())){
-            option = (String) menu.getSelectedItem();
-            System.out.println(getOptionSelected());
-        }
-        // Capturar el evento del clic al boton Cancelar
-        else if("buttonCancel".equals(e.getActionCommand())){
-            System.out.println("Presionaste cancelar");
-        }
+    public void configButtonAccept(ActionListener listener) {
+        buttonAccept.addActionListener(listener);
     }
 
-    public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.setVisible(true);
+    public void configButtonCancel(ActionListener listener) {
+        buttonCancel.addActionListener(listener);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    }
+
+    // public static void main(String[] args) {
+    //     Menu menu = new Menu();
+    //     menu.setVisible(true);
+    // }
 }
