@@ -9,7 +9,6 @@ public class GeneralJFrame extends JFrame{
 
     public GeneralJFrame(){
         // Configuración del JFrame
-        setTitle("Titulo general");
         setIconImage(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());

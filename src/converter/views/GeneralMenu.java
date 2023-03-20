@@ -2,29 +2,25 @@ package src.converter.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Menu extends GeneralJFrame{
-    private String option;
+public class GeneralMenu extends GeneralJFrame implements ActionListener{
     private JButton buttonAccept;
     private JButton buttonCancel;
     private JComboBox<String> menu;
-    private String[] options = {"Conversor de divisas", "Conversor de temperatura"};
     private JPanel panelButtons;
-    private JLabel hint;
 
-    public Menu(){
+    public GeneralMenu(String[] options, String jlabelText, String title){
         // Definiendo el Jframe
         super();
-        setTitle("Menu");
-
-        // Definiendo el texto indicaciones
-        hint = new JLabel("Selecciona un tipo de conversor");
+        setTitle(title);
+        JLabel hint = new JLabel(jlabelText);
         // hint.setHorizontalAlignment(JLabel.CENTER);
         // Definiendo el menu desplegable
 
         menu = new JComboBox<>(options);
-        menu.setBounds(0, 0, 250, 50);
+        getMainPanel().add(hint);
 
         // Definiendo un panel
 
@@ -38,23 +34,22 @@ public class Menu extends GeneralJFrame{
 
         // Boton Cancel
         buttonCancel = new JButton("Cancelar");
+        buttonCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.exit(0);
+            }
+            
+        });
         panelButtons.add(buttonCancel);
         
         actions();
     }
 
-    public JButton getButtonAccept() {
-        return buttonAccept;
-    }
-
-    public JButton getButtonCancel() {
-        return buttonCancel;
-    }
 
     private void actions(){
         // Añadiendo elementos
         getMainPanel().setPreferredSize(new Dimension(255,85));
-        getMainPanel().add(hint);
         getMainPanel().add(Box.createVerticalStrut(3));
         getMainPanel().add(menu);
         getMainPanel().add(Box.createVerticalStrut(3));
@@ -64,17 +59,32 @@ public class Menu extends GeneralJFrame{
         pack();
     }
 
-    public String getOptionSelected(){
-        return option;
-    }
-
     public void configButtonAccept(ActionListener listener) {
         buttonAccept.addActionListener(listener);
     }
 
-    public void configButtonCancel(ActionListener listener) {
-        buttonCancel.addActionListener(listener);
+    // public void configButtonCancel(ActionListener listener) {
+    //     buttonCancel.addActionListener(listener);
+    // }
+
+    public JComboBox<String> getMenu() {
+        return menu;
     }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    }
+
+
+    
+
+    
+
+    
+    
 
 
     // public static void main(String[] args) {
