@@ -78,6 +78,22 @@ public class GeneralMenu extends GeneralJFrame implements ActionListener{
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
+    
+    public double getInput(String text){
+        String numStr = JOptionPane.showInputDialog(null, text);
+        try {
+            double number = Double.parseDouble(numStr);
+            return number;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El input no es un número válido.");
+            return getInput(text);
+        }
+    }
+
+    public void nextJFrame(GeneralDecision gd){
+        gd.setVisible(true);
+    }
+
 
     
 
