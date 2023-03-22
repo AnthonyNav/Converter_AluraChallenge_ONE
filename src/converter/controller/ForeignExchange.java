@@ -20,12 +20,13 @@ public class ForeignExchange extends Thread{
     public void run(){
         GeneralMenu foreignExchangeMenu = new GeneralMenu(foreignExchange, "Seleccione la conversión", "Divisas");
         foreignExchangeMenu.setVisible(true);
+        Icon icon = new ImageIcon("src/resources/exchange.png");
         foreignExchangeMenu.configButtonAccept(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Input
                 foreignExchangeMenu.setVisible(false);
-                double valueInput = foreignExchangeMenu.getInput("Dame la cantidad de dinero que deseas convertir");
+                double valueInput = foreignExchangeMenu.getInput("Dame la cantidad de dinero que deseas convertir", icon);
                 
                 String optionSelected = (String) foreignExchangeMenu.getMenu().getSelectedItem();
                 int posOpt = whereIs(optionSelected);

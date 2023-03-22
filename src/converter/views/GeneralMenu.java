@@ -79,14 +79,14 @@ public class GeneralMenu extends GeneralJFrame implements ActionListener{
     }
 
     
-    public double getInput(String text){
-        String numStr = JOptionPane.showInputDialog(null, text);
+    public double getInput(String text, Icon icon){
         try {
+            String numStr = (String) JOptionPane.showInputDialog(null, text, "Input", JOptionPane.PLAIN_MESSAGE, icon, null, null);
             double number = Double.parseDouble(numStr);
             return number;
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "El input no es un número válido.");
-            return getInput(text);
+            return getInput(text, icon);
         }
     }
 
@@ -95,12 +95,7 @@ public class GeneralMenu extends GeneralJFrame implements ActionListener{
     }
 
 
-    
 
-    
-
-    
-    
 
 
     // public static void main(String[] args) {

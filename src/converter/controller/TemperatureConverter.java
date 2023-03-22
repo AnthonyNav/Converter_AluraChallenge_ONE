@@ -3,6 +3,8 @@ package src.converter.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import src.converter.views.GeneralDecision;
@@ -20,11 +22,12 @@ public class TemperatureConverter extends Thread {
     public void run(){
         GeneralMenu temperatureScalesMenu = new GeneralMenu(temperatureScales, "Seleccione la conversión", "Temperaturas");
         temperatureScalesMenu.setVisible(true);
+        Icon icon = new ImageIcon("src/resources/temperature.png");
         temperatureScalesMenu.configButtonAccept(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temperatureScalesMenu.setVisible(false);
-                double valueInput = temperatureScalesMenu.getInput("Dame la cantidad a convertir");
+                double valueInput = temperatureScalesMenu.getInput("Dame la cantidad a convertir",icon);
                 String optionSelected = (String) temperatureScalesMenu.getMenu().getSelectedItem();
                 double result=-1;
                 switch (optionSelected) {
